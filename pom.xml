@@ -43,4 +43,28 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.confluent</groupId>
+                    <artifactId>kafka-connect-maven-plugin</artifactId>
+                    <version>0.12.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-connect-maven-plugin</artifactId>
+                <version>0.12.0</version>
+                <configuration>
+                    <componentTypes>sink</componentTypes>
+                    <ownerUsername>user</ownerUsername>
+                    <description>some funny connector</description>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
