@@ -60,6 +60,7 @@
                 <version>0.12.0</version>
                 <configuration>
                     <componentTypes>sink</componentTypes>
+                    <name>CustomMongoConnector</name>
                     <ownerUsername>user</ownerUsername>
                     <description>some funny connector</description>
                 </configuration>
