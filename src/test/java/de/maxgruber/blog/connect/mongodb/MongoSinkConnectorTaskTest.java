@@ -2,6 +2,8 @@ package de.maxgruber.blog.connect.mongodb;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.connect.sink.SinkRecord;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -21,8 +23,8 @@ class MongoSinkConnectorTaskTest {
         log.info("version: {}", mongoSinkConnectorTask.version());
     }
 
-    @Test
-    void start() {
+    @BeforeEach
+    void init() {
         Map<String, String> props = new HashMap<>();
         mongoSinkConnectorTask.start(props);
     }
