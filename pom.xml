@@ -61,7 +61,7 @@
                 <configuration>
                     <componentTypes>sink</componentTypes>
                     <name>CustomMongoConnector</name>
-                    <ownerUsername>user</ownerUsername>
+                    <ownerUsername>Blog</ownerUsername>
                     <description>some funny connector</description>
                 </configuration>
             </plugin>
