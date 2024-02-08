@@ -17,7 +17,8 @@ public class MongoSinkConnector extends SinkConnector {
 
     static final ConfigDef CONFIG_DEF = new ConfigDef()
             .define("connection", Type.STRING, null, Importance.HIGH, "how to connect to mongo")
-            .define("collection", Type.STRING, null, Importance.HIGH, "mongo collection to be used");
+            .define("db", Type.STRING, "connect", Importance.HIGH, "mongo db to be used")
+            .define("collection", Type.STRING, "connect", Importance.HIGH, "mongo collection to be used");
 
     private Map<String, String> props;
 
