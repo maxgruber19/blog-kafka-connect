@@ -54,6 +54,8 @@ public class MongoSinkConnectorTask extends SinkTask {
     public void flush(Map<TopicPartition, OffsetAndMetadata> offsets) {}
 
     @Override
-    public void stop() {}
+    public void stop() {
+        mongoClient.close();
+    }
 
 }
