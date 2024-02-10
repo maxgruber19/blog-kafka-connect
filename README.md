@@ -47,21 +47,21 @@ We need two classes extending SinkConnector and SinkTask. The task contains the 
 
 To be able to use the required classes we first need to import kafka-connect-api to our pom.xml.
 
-```
+```xml
 <dependency>
-<groupId>org.apache.kafka</groupId>
-<artifactId>connect-api</artifactId>
-<version>3.6.1</version>
+  <groupId>org.apache.kafka</groupId>
+  <artifactId>connect-api</artifactId>
+  <version>3.6.1</version>
 </dependency>
 ```
 
 The less exciting part of the development is the connector class itself. Only highlights will be discussed here. Find the full code @ github. We define external configs the connector will need like connection urls, passwords or collection names. These parameters will be exposed for configuration in the control center and in the connect REST API.
 
-```
+```java
 static final ConfigDef CONFIG_DEF = new ConfigDef()
-.define("connection", Type.STRING, null, Importance.HIGH, "how to connect to mongo")
-.define("db", Type.STRING, "connect", Importance.HIGH, "mongo db to be used")
-.define("collection", Type.STRING, "connect", Importance.HIGH, "mongo collection to be used");
+    .define("connection", Type.STRING, null, Importance.HIGH, "how to connect to mongo")
+    .define("db", Type.STRING, "connect", Importance.HIGH, "mongo db to be used")
+    .define("collection", Type.STRING, "connect", Importance.HIGH, "mongo collection to be used");
 ```
 
 That's almost everything you have to know about the connector class. Let's dive into the task class because that's where the magic happens.
@@ -107,7 +107,7 @@ CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components,/plugi
 We can fill the /plugins directory by adding volumes to the docker-compose.yaml file. We'll mount our target/components/packages directory from our host machine into /plugins in our connect container. Make sure you copy the fully qualified path from you IDE.
 ```yaml
 volumes:
-- /Users/maxgruber/IdeaProjects/blog-kafka-connect/target/components/packages:/plugins
+  - /Users/maxgruber/IdeaProjects/blog-kafka-connect/target/components/packages:/plugins
 ```
 Now we just need to restart the cluster and the connector will be ready for deployment.
 ```bash
